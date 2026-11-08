@@ -19,3 +19,6 @@ bare clone with no workspace, the full guide is at <https://docs.start9.com/pack
   seeded configs, and run `nomadnet-session` (plus `ttyd … tmux attach-session -t nomadnet`).
 - In Python run inside the image, import msgpack as `RNS.vendor.umsgpack`, as Nomad Network does. A bare
   `import msgpack` fails: the package isn't installed on its own.
+- Keep the `check` job in `.github/workflows/tagAndRelease.yml`. The shared workflow decides whether
+  a version is new by asking `REFERENCE_REGISTRY`, which never lists this package, so without the
+  check every push to `master` rebuilds and re-releases the current version.
