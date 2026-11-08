@@ -1,0 +1,10 @@
+{
+  "name": "nomadnet-startos",
+  "dependencies": {
+    "@start9labs/start-sdk": "4.0.0",
+    "nextexplorer-startos": "github:Start9Labs/nextexplorer-startos#next"
+  },
+  "overrides": {
+    "@start9labs/start-sdk": "$@start9labs/start-sdk"
+  }
+}
