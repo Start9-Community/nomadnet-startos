@@ -9,7 +9,7 @@
 > upstream documentation is accurate and fully applicable — see the
 > Documentation section of `instructions.md` for links.
 
-[Nomad Network](https://github.com/markqvist/NomadNet) is an encrypted, off-grid mesh communicator and page-hosting node built on Reticulum and LXMF. Upstream is a terminal application; this package keeps its text UI running permanently on the server, serves it to the browser through a password-protected web terminal, and seeds a configuration that makes the server a hosting node, LXMF propagation node and Reticulum transport node out of the box.
+Nomad Network is an encrypted, off-grid mesh communicator and page-hosting node built on Reticulum and LXMF. Upstream is a terminal application; this package keeps its text UI running permanently on the server, serves it to the browser through a password-protected web terminal, and seeds a configuration that makes the server a hosting node, LXMF propagation node and Reticulum transport node out of the box.
 
 The icon is the Reticulum project logo; Nomad Network itself publishes no logo.
 
@@ -34,11 +34,11 @@ The icon is the Reticulum project logo; Nomad Network itself publishes no logo.
 
 ## Image and Container Runtime
 
-The image is built by this package's `Dockerfile`, because upstream's published container image is amd64-only. It is `python:3.12-slim` with Nomad Network (and its `rns` and `lxmf` dependencies) installed from PyPI, plus `tmux`, `nano`, and the static `ttyd` release binary (checksum-verified).
+The image is built by this package's `Dockerfile`, because upstream's published container image is amd64-only. It is the official Python slim image with Nomad Network (and its `rns` and `lxmf` dependencies) installed from PyPI, plus `tmux`, `nano`, and the static `ttyd` release binary (checksum-verified).
 
 | Item          | Value                                                                                   |
 | ------------- | --------------------------------------------------------------------------------------- |
-| Image source  | Custom `Dockerfile` (pip-installed `nomadnet` on `python:3.12-slim`)                    |
+| Image source  | Custom `Dockerfile` (pip-installed `nomadnet` on the Python slim image)                 |
 | Architectures | x86_64, aarch64                                                                         |
 | Entrypoint    | None used; each daemon sets its own command                                             |
 | Environment   | `HOME=/data`, so `~/.reticulum`, `~/.nomadnetwork` and `~/Downloads` land on the volume |
@@ -58,7 +58,7 @@ Everything lives on one volume, `main`, mounted at `/data`.
 
 | Path (in the volume)          | Contents                                                                                         |
 | ----------------------------- | ------------------------------------------------------------------------------------------------ |
-| `store.json`                  | StartOS-side state: the web terminal password                                                    |
+| `store.json`                  | StartOS-side state: the web terminal password and the Website Source choice                      |
 | `.nomadnetwork/config`        | Nomad Network config                                                                             |
 | `.nomadnetwork/storage/`      | Primary identity, peer settings, conversations, LXMF router state and propagation message store  |
 | `.nomadnetwork/storage/pages` | Pages your node serves (micron `.mu` files, or executable scripts)                               |
