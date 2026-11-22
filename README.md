@@ -11,6 +11,14 @@
 
 Nomad Network is an encrypted, off-grid mesh communicator and page-hosting node built on Reticulum and LXMF. Upstream is a terminal application; this package keeps its text UI running permanently on the server, serves it to the browser through a password-protected web terminal, and seeds a configuration that makes the server a hosting node, LXMF propagation node and Reticulum transport node out of the box.
 
+Upstream has no hosted service; the alternative is running the terminal application on a personal computer. The StartOS node differs from that in five ways:
+
+- **It hosts a website on the Reticulum network.** The node serves its pages and files to anyone on the network for as long as the server is running, with no personal computer left on. The site comes from the node's own pages folder, or from NextExplorer folders chosen with **Website Source**.
+- **The node stays online.** It runs whenever the server does, so messages keep arriving and it keeps routing for connected devices while personal computers are asleep or offline.
+- **It holds messages for offline peers.** As a propagation node, it stores encrypted LXMF messages for the user and their peers until they come back online.
+- **Any browser opens it.** The text UI is served through a password-protected web terminal, so a phone or laptop reaches the same session without installing Nomad Network.
+- **The node's addresses survive.** Identities, configuration, conversations, pages and files are backed up with the server, so a restored node keeps the addresses its peers already know.
+
 The icon is the Reticulum project logo; Nomad Network itself publishes no logo.
 
 ---
