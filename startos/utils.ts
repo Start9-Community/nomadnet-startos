@@ -193,10 +193,16 @@ export function iniString(value: string): string {
   return /[,#']|^\s|\s$/.test(value) ? `"${value}"` : value
 }
 
-export const ttydCommand: T.CommandType = [
+// ttyd also demands this in each socket's first message, readable only same-origin.
+export const ttydCommand = (password: string): T.CommandType => [
   'ttyd',
   '--port',
   String(ttydPort),
+  '--credential',
+  `${uiUsername}:${password}`,
+  // Errors and warnings only: ttyd logs the credential at notice level.
+  '--debug',
+  '3',
   '--writable',
   '--ping-interval',
   '30',
